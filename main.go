@@ -7,6 +7,8 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -19,6 +21,7 @@ type QuoteResponse struct {
 }
 
 func main() {
+	signal.Ignore(syscall.SIGPIPE)
 
 	godotenv.Load()
 
